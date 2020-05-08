@@ -8,10 +8,11 @@ public class printListFromTailToHead_3 {
         }
     }
     public static ListNode bulidlistNode(int[] nums,int st){
-        if(nums==null||st>=nums.length); return null;
-        //ListNode root=new ListNode();
-
-
+        if(nums==null||st>=nums.length)
+            return null;
+        ListNode root=new ListNode(nums[st]);
+        root.next=bulidlistNode(nums,st+1);
+        return root;
     }
     public static ArrayList<Integer> res=new ArrayList<>();
     public static ArrayList<Integer> printListFromTailToHead(ListNode listnode)//还可以利用栈或者倒置list这样的做法
@@ -22,8 +23,10 @@ public class printListFromTailToHead_3 {
         res.add(listnode.val);
         return res;
     }
-    public static void Main(String[] args)
+    public static void main(String[] args)
     {
+        ListNode l1=bulidlistNode(new int[]{1, 2, 3, 4, 5},0);
+        System.out.println(printListFromTailToHead(l1));
 
     }
 }
